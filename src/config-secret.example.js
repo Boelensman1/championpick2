@@ -10,5 +10,6 @@ const environment = {
 }[process.env.NODE_ENV || 'development'];
 
 module.exports = Object.assign({
-  riotApiKey: ''
+  riotApiKey: '',
+  dbPass: 'abcabc',
 }, environment);

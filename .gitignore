@@ -5,3 +5,5 @@ dist/
 webpack-assets.json
 webpack-stats.json
 npm-debug.log
+src/config-secret.js
+bin/shell.js

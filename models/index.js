@@ -9,6 +9,7 @@ const db = {};
 // get the database info
 import { dbModelLocation} from '../src/config';
 import { dbConnectionConfig } from '../src/config';
+import { dbPass } from '../src/config-secret.js';
 
 // update the dbModelLocation with the root pah
 import appRoot from 'app-root-path';
@@ -16,7 +17,7 @@ const dbModelLocationRel = appRoot + '/' + dbModelLocation;
 
 const sequelize = new Sequelize(dbConnectionConfig.name,
     dbConnectionConfig.user,
-    dbConnectionConfig.pass,
+    dbPass,
     dbConnectionConfig.options);
 
 function importModel(modelName) {
