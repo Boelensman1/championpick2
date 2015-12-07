@@ -17,6 +17,9 @@ import {
 }
 from '../src/config';
 
+import {riotApiKey} from '../src/config-secret.js';
+
+
 // function to call at the end
 var cb;
 
@@ -39,7 +42,7 @@ function makeUrl(type, parameter) {
 // init riot api
 import lol from 'lol-js';
 var lolClient = lol.client({
-  apiKey: riotApiConfig.key,
+  apiKey: riotApiKey,
   cache: null
 });
 
@@ -171,10 +174,6 @@ function getImages(champions, rawData, dataDragonVersion) {
   return deferred.promise;
 }
 
-function capitalizeOnlyFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.toLowerCase().slice(1);
-}
-
 function processChampions(rawData, dataDragonVersion) {
   var champions = [];
   Object.keys(rawData.data).forEach(function(championName) {
@@ -212,7 +211,6 @@ function processChampions(rawData, dataDragonVersion) {
     force: true
   }).then(function() {
     getImages(champions, rawData.data, dataDragonVersion).then(function(){
-      cb();
     });
   });
 
