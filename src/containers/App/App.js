@@ -4,9 +4,8 @@ import { IndexLink } from 'react-router';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, NavBrand, Nav, NavItem, CollapsibleNav } from 'react-bootstrap';
 import DocumentMeta from 'react-document-meta';
-import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
+import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/championList';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
-import { InfoBar } from 'components';
 import { pushState } from 'redux-router';
 import connectData from 'helpers/connectData';
 import config from '../../config';
@@ -107,7 +106,6 @@ export default class App extends Component {
         <div className={styles.appContent}>
           {this.props.children}
         </div>
-        <InfoBar/>
 
         <div className="well text-center">
           Have questions? Ask for help <a

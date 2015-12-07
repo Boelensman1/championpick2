@@ -3,10 +3,11 @@ const LOAD_SUCCESS = 'redux-example/LOAD_SUCCESS';
 const LOAD_FAIL = 'redux-example/LOAD_FAIL';
 
 const initialState = {
+  champions: [],
   loaded: false
 };
 
-export default function ChampionList(state = initialState, action = {}) {
+export default function championList(state = initialState, action = {}) {
   switch (action.type) {
     case LOAD:
       return {
@@ -18,7 +19,7 @@ export default function ChampionList(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: true,
-        data: action.result
+        champions: action.result
       };
     case LOAD_FAIL:
       return {
@@ -33,12 +34,12 @@ export default function ChampionList(state = initialState, action = {}) {
 }
 
 export function isLoaded(globalState) {
-  return globalState.info && globalState.info.loaded;
+  return globalState.championList && globalState.championList.loaded;
 }
 
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('/loadInfo')
+    promise: (client) => client.get('/loadChampions')
   };
 }
